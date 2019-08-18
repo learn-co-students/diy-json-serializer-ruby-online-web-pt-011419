@@ -3,6 +3,9 @@ require 'rails_helper'
 describe 'navigate' do
   before do
     @post = Post.create(title: "My Post", description: "My post desc")
+    @author = Author.create(name: "Cool Guy", hometown: "Pass The Tests")
+    @post.author = @author
+    @post.save
   end
 
   it 'shows the title on the show page in a h1 tag' do
