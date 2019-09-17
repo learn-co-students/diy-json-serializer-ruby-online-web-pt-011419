@@ -5,6 +5,11 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def postData
+    post = Post.find(params[:id])
+    render json: PostSerializer.serialize(post)
+  end
+
   def show
   end
 
@@ -29,11 +34,6 @@ class PostsController < ApplicationController
   def post_data
     post = Post.find(params[:id])
     render plain: post.description
-  end
-
-  def body
-    post = Post.find(params[:id])
-    render json: PostSerializer.serialize(post)
   end
 
 private
